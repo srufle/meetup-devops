@@ -12,9 +12,13 @@ describe 'example_cookbook::default' do
       runner = ChefSpec::ServerRunner.new
       runner.converge(described_recipe)
     end
-
-    it 'converges successfully' do
-      expect { chef_run }.to_not raise_error
+    
+    it 'installs vim' do
+      expect(chef_run).to install_package('vim')
+    end
+    
+    it 'updates .vimrc' do
+      expect(chef_run).to render_file('/home/vagrant/.vimrc').with_content(':color desert')
     end
   end
 end
