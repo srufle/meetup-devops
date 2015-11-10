@@ -7,3 +7,10 @@
 include_recipe 'apt'
 
 package 'vim'
+
+template '/home/vagrant/.vimrc' do
+  source 'vimrc.erb'
+  variables(
+    color: node['example']['vim']['color']
+  )
+end
