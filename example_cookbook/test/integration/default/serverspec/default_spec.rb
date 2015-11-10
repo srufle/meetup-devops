@@ -1,9 +1,8 @@
 require 'spec_helper'
 
-describe 'example_cookbook::default' do
-  # Serverspec examples can be found at
-  # http://serverspec.org/resource_types.html
-  it 'does something' do
-    skip 'Replace this with meaningful tests'
+# Verifies that vim is installed on the machine
+describe package('vim') do
+  it 'vim should be_installed' do
+    should be_installed
   end
 end
